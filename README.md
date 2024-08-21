@@ -30,10 +30,41 @@ Ensure that Docker and Docker Compose are installed on your system. You can foll
 
 ### 1. Clone the Repository
 
-First, clone this repository to your local machine:
+First, clone this repository to your local machine
+
+### 2. Configure the Docker Compose File
+
+The `docker-compose.yml` file is pre-configured to get Uptime Kuma running with default settings. Here is the content of the `docker-compose.yml` file:
+
+```yaml
+version: '3.9'
+
+services:
+  uptime-kuma:
+    image: elestio/uptime-kuma
+    ports:
+      - "9387:3001"
+    environment:
+      - DB_TYPE=sqlite
+      - DB_STORAGE=/app/data/uptime-kuma.db
+      - SOFTWARE_VERSION_TAG=latest
+      - URL=http://localhost:9387
+    volumes:
+      - uptime-kuma-data:/app/data
+    restart: always
+    healthcheck:
+      disable: true
+
+volumes:
+  uptime-kuma-data:
+
+```
+
+### 3. Start Uptime Kuma
+
+To start Uptime Kuma, run the following command:
 
 ```bash
-git clone https://github.com/yourusername/uptime-kuma-docker-compose.git
-cd uptime-kuma-docker-compose
+docker-compose up -d
 ```
 
