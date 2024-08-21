@@ -1,0 +1,20 @@
+version: '3.9'
+
+services:
+  uptime-kuma:
+    image: elestio/uptime-kuma
+    ports:
+      - "9387:3001"
+    environment:
+      - DB_TYPE=sqlite
+      - DB_STORAGE=/app/data/uptime-kuma.db
+      - SOFTWARE_VERSION_TAG=latest
+      - URL=http://localhost:9387
+    volumes:
+      - uptime-kuma-data:/app/data
+    restart: always
+    healthcheck:
+      disable: true
+
+volumes:
+  uptime-kuma-data:
