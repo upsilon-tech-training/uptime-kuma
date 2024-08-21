@@ -68,3 +68,43 @@ To start Uptime Kuma, run the following command:
 docker-compose up -d
 ```
 
+### 4. Access Uptime Kuma
+
+Once the containers are up and running, you can access Uptime Kuma through your web browser at [http://localhost:9387](http://localhost:9387).
+
+## Stop and Remove Containers
+
+To stop the running containers, use:
+
+```bash
+docker-compose down
+```
+
+## Configuration
+
+You can adjust Uptime Kuma's settings by modifying the environment variables in the `docker-compose.yml` file:
+
+- **`DB_TYPE`**: Type of database to use (`sqlite` or `mysql`).
+- **`DB_STORAGE`**: Path to the database file.
+- **`URL`**: URL where Uptime Kuma will be accessible.
+
+Refer to the [Uptime Kuma documentation](https://github.com/louislam/uptime-kuma) for more detailed configuration options.
+
+## Backup and Restore
+
+To back up your Uptime Kuma data, you can copy the data directory defined in the `docker-compose.yml` file. To restore, simply place your backup files in the same directory.
+
+## Troubleshooting
+
+- **Container not starting**: Check the logs for errors using `docker-compose logs` to diagnose the issue.
+- **Port conflicts**: Ensure that port `9387` is not being used by another service on your host.
+
+## Contributing
+
+If you have any improvements or fixes, feel free to create a pull request. For major changes, please open an issue to discuss your ideas before submitting a pull request.
+
+
+## Acknowledgements
+
+- [Uptime Kuma](https://github.com/louislam/uptime-kuma) for providing the monitoring solution.
+- [Docker](https://www.docker.com) for the containerization platform.
